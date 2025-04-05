@@ -3,7 +3,6 @@ from db import init_db, search_company_by_name
 
 app = Flask(__name__)
 
-
 @app.route('/', methods=['GET', 'POST'])
 def homepage():
     init_db()
