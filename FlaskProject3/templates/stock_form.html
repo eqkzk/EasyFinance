@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Stock Portfolio Manager</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #F9FAFF;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+    .top-nav {
+      width: 100%;
+      height: 50px;
+      background: #026CDF;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .nav-button {
+      background: white;
+      color: #026CDF;
+
+      border: 2px solid #026CDF;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .nav-button:hover {
+      background: #026CDF;
+      color: white;
+    }
+    .container {
+      width: 800px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      text-align: center;
+      margin-top: 50px;
+    }
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: black;
+    }
+    .form-group {
+      width: 100%;
+      margin-top: 20px;
+      text-align: left;
+    }
+    .form-input {
+      width: 100%;
+      height: 40px;
+      margin: 10px 0;
+      padding: 0 10px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .form-button {
+      width: 100%;
+      height: 40px;
+      background: #026CDF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 20px;
+    }
+    @media (max-width: 768px) {
+      .container { width: 90%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-nav">
+    <button class="nav-button" onclick="window.history.back()">Back</button>
+    <button class="nav-button" onclick="window.location.href='/logout'">Logout</button>
+  </div>
+
+  <div class="container">
+    <h2>Add Stock</h2>
+    <form method="POST" action="/add_stock">
+      <div class="form-group">
+        <label>Ticker Name</label>
+        <input type="text" name="ticker" class="form-input" required />
+      </div>
+      <div class="form-group">
+        <label>Number of Shares</label>
+        <input type="number" name="shares" class="form-input" required />
+      </div>
+      <div class="form-group">
+        <label>Date of Purchase (YYYY-MM-DD or "today")</label>
+        <input type="text" name="date" class="form-input" required />
+      </div>
+      <button type="submit" class="form-button">Add Stock</button>
+    </form>
+
+    <h2 style="margin-top: 40px;">Remove Stock</h2>
+    <form method="POST" action="/remove_stock">
+      <div class="form-group">
+        <label>Ticker Name</label>
+        <input type="text" name="ticker" class="form-input" required />
+      </div>
+      <div class="form-group">
+        <label>Number of Shares to Sell</label>
+        <input type="number" name="shares" class="form-input" required />
+      </div>
+      <div class="form-group">
+        <label>Date of Sale (YYYY-MM-DD or "today")</label>
+        <input type="text" name="date" class="form-input" required />
+      </div>
+      <button type="submit" class="form-button">Remove Stock</button>
+    </form>
+  </div>
+</body>
+</html>
