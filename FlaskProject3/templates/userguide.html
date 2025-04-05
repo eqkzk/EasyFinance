@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Stock Information</title>
+    <title>EasyFinance - User Guide</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet" />
@@ -18,7 +18,6 @@
             position: relative;
         }
 
-        /* Banner */
         .banner {
             position: absolute;
             top: 0;
@@ -29,7 +28,6 @@
             z-index: -1;
         }
 
-        /* Top Navigation Bar */
         .top-nav {
             width: 100%;
             height: 50px;
@@ -39,6 +37,7 @@
             align-items: center;
             padding: 0 20px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: white;
         }
 
         .nav-button {
@@ -57,7 +56,6 @@
             color: white;
         }
 
-        /* Main Content */
         .container {
             width: 800px;
             background: white;
@@ -68,120 +66,116 @@
             margin-top: 200px;
         }
 
-        /* Stock Information Box */
-        #stock-info {
-            display: none;
-            background: #f0f0f0;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
+        h1 {
+            color: #026CDF;
+            margin-bottom: 20px;
         }
 
-        /* Form Button */
+        ul {
+            text-align: left;
+            margin: 0 auto 30px auto;
+            padding-left: 20px;
+            line-height: 1.7;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 70%;
+            font-size: 16px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
         .form-button {
             background: #026CDF;
             color: white;
             border: none;
-            padding: 10px 15px;
+            padding: 10px 20px;
             font-size: 16px;
             font-weight: 700;
             cursor: pointer;
             border-radius: 4px;
+            margin-top: 10px;
         }
 
         .form-button:hover {
             background: #0056b3;
         }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f3f3f3;
+        }
+
+        .no-results {
+            margin-top: 15px;
+            color: #d00;
+            font-weight: bold;
+        }
+
+        .search-header {
+            margin-top: 30px;
+            color: #026CDF;
+        }
     </style>
 </head>
 <body>
-    <!-- Top Navigation Bar -->
-    <div class="top-nav">
-        <button type="button" id="back-button" class="nav-button">Back</button>
-        <button type="button" id="logout-button" class="nav-button">Logout</button>
-    </div>
-
-    <!-- Banner Image -->
     <div class="banner"></div>
 
-    <!-- Content -->
-    <div class="container mt-4">
-        <h2>User Guide</h2>
-        <p>Welcome to EasyFinance! This platform helps manage your stock investments efficiently. <br>
-            EasyFinance is an easy-to-use interface for tracking stock investments and making informed financial decisions. <br><br>
-            After logging in, follow the on-screen prompts to navigate through the options.</p>
-        <ul>
-            <li>Add Stock to Portfolio - Enter a stock ticker and number of shares.</li>
-            <li>Remove Stock - Specify a stock ticker and number of shares.</li>
-            <li>View Portfolio - Displays current stock holdings.</li>
-            <li>View Transactions - Access historical stock transactions.</li>
-            <li>Fetch Stock Info - Enter a stock ticker to retrieve stock details.</li>
-            <li>Update Risk Tolerance - Adjust your stock recommendations.</li>
-            <li>Import Portfolio - Upload a CSV file for easier access.</li>
-        </ul>
-
-        <!-- Form for Company Search -->
-        <form id="stock-form" class="mt-3">
-            <label for="ticker" class="form-label">Enter a Company Name:</label>
-            <input type="text" id="ticker" name="ticker" class="form-control" placeholder="Apple, Tesla, etc." required>
-
-        <div style="text-align: center; margin-top: 10px;">
-            <button type="submit" class="form-button">Fetch Company Ticker</button>
-        </div>
-        </form>
-
-        <!-- Stock Information -->
-        <div id="stock-info">
-            <h3>Stock Information:</h3>
-            <p><strong>Ticker:</strong> <span id="ticker-info"></span></p>
-            <p><strong>Company Name:</strong> <span id="company-info"></span></p>
-            <p><strong>Industry:</strong> <span id="industry-info"></span></p>
-        </div>
+    <div class="top-nav">
+        <div><strong>EasyFinance</strong></div>
+        <button class="nav-button" onclick="location.href='/'">Home</button>
     </div>
 
-    <script>
-        document.getElementById("stock-form").addEventListener("submit", function (event) {
-            event.preventDefault();
-            const ticker = document.getElementById("ticker").value.trim();
+    <div class="container">
+        <h1>Welcome to EasyFinance</h1>
+        <p>Helping you manage your stock investments efficiently.</p>
 
-            if (!ticker) {
-                alert("Please enter a company name!");
-                return;
-            }
+        <ul>
+            <li><strong>Add Stock to Portfolio:</strong> Enter a stock ticker and the number of shares to purchase.</li>
+            <li><strong>Remove Stock from Portfolio:</strong> Specify a stock ticker and the number of shares to remove.</li>
+            <li><strong>View Portfolio:</strong> Displays your current stock holdings, including quantities, purchase prices,live price and realized profit/loss. As well as a pie chart for portfolio allocation.</li>
+            <li><strong>View Past Transactions:</strong> Access to historical stock transactions, including purchases, sales, realised profit/loss and unrealised profit/loss.</li>
+            <li><strong>Fetch Stock Info:</strong> Enter a stock ticker to retrieve details such as book value, market cap, trailing PE and forward PE.  View the stock prices for the last 6 months to observe any trend.</li>
+            <li><strong>Update Risk Tolerance:</strong> View your current risk tolerance and modify it to adjust the risk threshold for stock recommendations.</li>
+            <li><strong>Import Portfolio:</strong> Import a CSV file if you have a existing portfolio for easier access.</li>
+        </ul>
 
-            fetch(`/get_stock_info?ticker=${ticker}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        alert(data.error);
-                        return;
-                    }
+        <h2 class="search-header">Search for a Company</h2>
+        <form method="POST" action="/">
+            <input type="text" name="company_name" placeholder="Type a company name..." value="{{ query }}">
+            <br>
+            <button type="submit" class="form-button">Search</button>
+        </form>
 
-                    document.getElementById("ticker-info").textContent = data.stock_data.Ticker;
-                    document.getElementById("company-info").textContent = data.stock_data.Company;
-                    document.getElementById("industry-info").textContent = data.stock_data.Industry;
-                    document.getElementById("stock-info").style.display = "block";
-                })
-                .catch(error => console.error("Error fetching stock data:", error));
-        });
-
-        document.getElementById("back-button").addEventListener("click", function () {
-            window.history.back();
-        });
-
-        document.getElementById("logout-button").addEventListener("click", function () {
-            fetch('/logout', { method: 'POST' })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert("You have been logged out.");
-                        window.location.href = "/login";
-                    } else {
-                        alert("Logout failed.");
-                    }
-                })
-                .catch(error => console.error("Logout error:", error));
-        });
-    </script>
+        {% if query %}
+            <h3>Results for "{{ query }}"</h3>
+            {% if results %}
+                <table>
+                    <tr><th>Ticker</th><th>Company Name</th></tr>
+                    {% for ticker, name in results %}
+                        <tr>
+                            <td>{{ ticker }}</td>
+                            <td>{{ name }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <p class="no-results">No results found.</p>
+            {% endif %}
+        {% endif %}
+    </div>
 </body>
 </html>
