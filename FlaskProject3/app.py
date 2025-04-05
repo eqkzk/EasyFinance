@@ -22,9 +22,3 @@ def homepage():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-    from flask import Flask, render_template, request
-    from db import init_db, search_company_by_name
-
-    app = Flask(__name__)
-
